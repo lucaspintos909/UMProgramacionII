@@ -14,6 +14,9 @@ public class Ejercicio1 {
         lista.addFirst(5);
         lista.addLast(50);
 
+        lista.remove(2);
+        Object valorPosicion1 = lista.get(1);
+
         Node n = lista.getHead();
 
         while (n.next != null) {
@@ -22,5 +25,6 @@ public class Ejercicio1 {
         }
         System.out.println(n.value);
         System.out.println("Existe el 1: " + lista.exists(1));
+        System.out.println("Obteniendo valor de la posicion 1: " + valorPosicion1);
     }
 }
