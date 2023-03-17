@@ -1,6 +1,6 @@
 package TADs.interfaces;
 
-public interface LinkedList {
+public interface LinkedListInterface {
     void add(Object value);
 
     void remove(Integer position);

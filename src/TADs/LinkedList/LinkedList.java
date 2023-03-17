@@ -1,6 +1,7 @@
 package TADs.LinkedList;
+import TADs.interfaces.LinkedListInterface;
 
-public class LinkedList implements TADs.interfaces.LinkedList {
+public class LinkedList implements LinkedListInterface {
     public Node head;
 
     @Override

@@ -18,7 +18,7 @@ public class Main {
             n = n.next;
         }
         System.out.println(n.value);
-        System.out.println("Existe el 1: " +  lista.exists(1));
+        System.out.println("Existe el 1: " + lista.exists(1));
 
     }
 }
