@@ -1,4 +1,4 @@
-package practico0;
+package practicos.practico0;
 
 import java.util.Scanner;
 import java.util.ArrayList;

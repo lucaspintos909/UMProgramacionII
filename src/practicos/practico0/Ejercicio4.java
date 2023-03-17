@@ -1,6 +1,6 @@
-package practico0;
+package practicos.practico0;
 
-import practico0.clases.Matrices;
+import practicos.practico0.clases.Matrices;
 
 public class Ejercicio4 {
     /*

@@ -1,4 +1,4 @@
-package practico0.clases;
+package practicos.practico0.clases;
 
 public class Conversion {
     public static float conversionAFharenheit(int gradosCelsius) {

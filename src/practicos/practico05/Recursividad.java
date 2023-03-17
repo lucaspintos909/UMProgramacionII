@@ -1,4 +1,4 @@
-package practico05;
+package practicos.practico05;
 
 public class Recursividad {
     public static int factorial(int num) {

@@ -1,4 +1,4 @@
-package practico1;
+package practicos.practico1;
 
 public class Ejercicio1 {
 }

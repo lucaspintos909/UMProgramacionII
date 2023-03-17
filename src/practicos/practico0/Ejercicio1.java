@@ -1,6 +1,6 @@
-package practico0;
+package practicos.practico0;
 
-import practico0.clases.Conversion;
+import practicos.practico0.clases.Conversion;
 public class Ejercicio1 {
     public static void main(String[] args) {
         int num = 2;
