@@ -1,6 +1,6 @@
-package utils.interfaces;
+package TADs.interfaces;
 
-public interface Lista {
+public interface LinkedList {
     void add(Object value);
 
     void remove(Integer position);

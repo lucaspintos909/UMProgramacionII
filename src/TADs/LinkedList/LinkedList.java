@@ -1,9 +1,6 @@
-package utils.classes;
+package TADs.LinkedList;
 
-import utils.interfaces.Lista;
-import utils.classes.Node;
-
-public class LinkedList implements Lista {
+public class LinkedList implements TADs.interfaces.LinkedList {
     public Node head;
 
     @Override
