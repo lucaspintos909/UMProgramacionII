@@ -1,5 +1,5 @@
-import utils.classes.LinkedList;
-import utils.classes.Node;
+import TADs.LinkedList.LinkedList;
+import TADs.LinkedList.Node;
 
 public class Main {
     public static void main(String[] args) {
