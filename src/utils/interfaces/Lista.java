@@ -1,0 +1,14 @@
+package utils.interfaces;
+
+public interface Lista {
+    void add(Object value);
+
+    void remove(Integer position);
+
+    Object get(Integer position);
+
+    boolean exists(Object value);
+
+    void addFirst(Object value);
+    void addLast(Object value);
+}
