@@ -1,4 +1,5 @@
 package TADs.LinkedList;
+
 import TADs.interfaces.LinkedListInterface;
 
 public class LinkedList implements LinkedListInterface {
@@ -9,13 +10,16 @@ public class LinkedList implements LinkedListInterface {
         Node newNode = new Node();
         newNode.value = value;
         newNode.next = null;
+        newNode.prev = null;
 
         if (head != null) {
-            Node it = getHead();
-            while (it.next != null) {
-                it = it.next;
+            Node last = head;
+            // Voy hasta el final de la lista
+            while (last.next != null) {
+                last = last.next;
             }
-            it.next = newNode;
+            last.next = newNode;
+            newNode.prev = last;
         } else {
             head = newNode;
         }
@@ -68,7 +72,7 @@ public class LinkedList implements LinkedListInterface {
         newNode.value = value;
 
         Node it = getHead();
-        while (it.next != null){
+        while (it.next != null) {
             it = it.next;
         }
         it.next = newNode;
@@ -79,8 +83,8 @@ public class LinkedList implements LinkedListInterface {
         Node it = getHead();
         boolean valueExists = false;
 
-        while (it.next != null){
-            if(it.value == value){
+        while (it.next != null) {
+            if (it.value == value) {
                 valueExists = true;
                 break;
             }
