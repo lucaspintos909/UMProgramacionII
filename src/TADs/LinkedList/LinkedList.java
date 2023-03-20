@@ -62,6 +62,7 @@ public class LinkedList implements LinkedListInterface {
 
         newNode.value = value;
         newNode.next = getHead();
+        newNode.prev = null;
 
         head = newNode;
     }
@@ -70,12 +71,15 @@ public class LinkedList implements LinkedListInterface {
     public void addLast(Object value) {
         Node newNode = new Node();
         newNode.value = value;
+        newNode.next = null;
 
-        Node it = getHead();
-        while (it.next != null) {
-            it = it.next;
+        Node last = getHead();
+        while (last.next != null) {
+            last = last.next;
         }
-        it.next = newNode;
+        newNode.prev = last;
+        last.next = newNode;
+
     }
 
     @Override
