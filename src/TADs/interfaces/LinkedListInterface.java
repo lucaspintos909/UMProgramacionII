@@ -10,5 +10,6 @@ public interface LinkedListInterface {
     boolean exists(Object value);
 
     void addFirst(Object value);
+
     void addLast(Object value);
 }
