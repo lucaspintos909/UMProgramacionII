@@ -152,8 +152,4 @@ class CircularLinkedListTest {
         assertNull(list.get(3));
         assertNull(list.get(4));
     }
-
-    @Test
-    void testRemove() {
-    }
 }
