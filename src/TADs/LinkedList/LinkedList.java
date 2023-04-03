@@ -1,55 +1,79 @@
 package TADs.LinkedList;
 
+import TADs.exceptions.IndexOutOfRange;
 import TADs.interfaces.LinkedListInterface;
 
 public class LinkedList<T> implements LinkedListInterface<T> {
     private Node<T> head;
 
+    public Integer size() {
+        Integer listSize = 0;
+        Node<T> aux = head;
+
+        if (aux == null) {
+            return listSize;
+        }
+
+        while (aux.next != null) {
+            aux = aux.next;
+            listSize++;
+        }
+        listSize++;
+
+        return listSize;
+    }
+
+    public void positionIsValid(Integer position) throws IndexOutOfRange {
+        if (position < 0 || position >= size()) {
+            String message = "IndexError: index out of range: " + position;
+            throw new IndexOutOfRange(message);
+        }
+    }
+
     @Override
     public void add(T value) {
         Node<T> newNode = new Node<>(value);
-        newNode.prev = null;
 
         if (head == null) {
             head = newNode;
             return;
         }
 
-        Node<T> last = head;
+        Node<T> aux = head;
         // Voy hasta el final de la lista
-        while (last.next != null) {
-            last = last.next;
+        while (aux.next != null) {
+            aux = aux.next;
         }
-        last.next = newNode;
-        newNode.prev = last;
-        newNode.next = head;
-        head.prev = newNode;
+        aux.next = newNode;
     }
 
     @Override
-    public void remove(Integer position) {
-        Node<T> prev = getHead();
+    public void remove(Integer position) throws IndexOutOfRange {
+        positionIsValid(position);
+        Node<T> prev = head;
 
         if (position == 0) {
             head = head.next;
-        } else {
-            /* position - 1 porque necesito el nodo anterior al que voy a eliminar */
-            for (int index = 0; index < position - 1; index++) {
-                prev = prev.next;
-            }
-
-            Node<T> prox = prev.next;
-            prev.next = prox.next;
+            return;
         }
+
+        for (int index = 0; index < position - 1; index++) {
+            prev = prev.next;
+        }
+
+        Node<T> prox = prev.next;
+        prev.next = prox.next;
+
     }
 
     @Override
     public T get(Integer position) {
-        Node<T> it = getHead();
+        Node<T> it = head;
 
         if (position == 0) {
             return head.value;
         }
+
         for (int index = 0; index < position; index++) {
             it = it.next;
         }
@@ -61,39 +85,33 @@ public class LinkedList<T> implements LinkedListInterface<T> {
     public void addFirst(T value) {
         Node<T> newNode = new Node<>(value);
 
-        newNode.next = getHead();
-        newNode.prev = null;
-
+        newNode.next = head;
         head = newNode;
     }
 
     @Override
     public void addLast(T value) {
         Node<T> newNode = new Node<>(value);
-        newNode.value = value;
-        newNode.next = null;
+        Node<T> aux = head;
 
-        Node<T> last = getHead();
-        while (last.next != null) {
-            last = last.next;
+        while (aux.next != null) {
+            aux = aux.next;
         }
-        newNode.prev = last;
-        last.next = newNode;
-
+        aux.next = newNode;
     }
 
     @Override
     public boolean exists(T value) {
-        Node<T> it = getHead();
+        Node<T> aux = head;
         boolean valueExists = false;
 
-        while (it.next != null) {
-            if (it.value.equals(value)) {
+        do {
+            if (aux.value.equals(value)) {
                 valueExists = true;
                 break;
             }
-            it = it.next;
-        }
+            aux = aux.next;
+        } while (aux != null);
 
         return valueExists;
     }
