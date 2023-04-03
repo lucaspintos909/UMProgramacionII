@@ -1,15 +1,17 @@
 package TADs.interfaces;
 
-public interface LinkedListInterface {
-    void add(Object value);
+import TADs.exceptions.IndexOutOfRange;
 
-    void remove(Integer position);
+public interface LinkedListInterface<T> {
+    void add(T value);
 
-    Object get(Integer position);
+    void remove(Integer position) throws IndexOutOfRange;
 
-    boolean exists(Object value);
+    T get(Integer position);
 
-    void addFirst(Object value);
+    boolean exists(T value);
 
-    void addLast(Object value);
+    void addFirst(T value);
+
+    void addLast(T value);
 }
