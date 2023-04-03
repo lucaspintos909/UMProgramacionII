@@ -2,32 +2,33 @@ package TADs.LinkedList;
 
 import TADs.interfaces.LinkedListInterface;
 
-public class LinkedList implements LinkedListInterface {
-    public Node head;
+public class LinkedList<T> implements LinkedListInterface<T> {
+    private Node<T> head;
 
     @Override
-    public void add(Object value) {
-        Node newNode = new Node();
-        newNode.value = value;
-        newNode.next = null;
+    public void add(T value) {
+        Node<T> newNode = new Node<>(value);
         newNode.prev = null;
 
-        if (head != null) {
-            Node last = head;
-            // Voy hasta el final de la lista
-            while (last.next != null) {
-                last = last.next;
-            }
-            last.next = newNode;
-            newNode.prev = last;
-        } else {
+        if (head == null) {
             head = newNode;
+            return;
         }
+
+        Node<T> last = head;
+        // Voy hasta el final de la lista
+        while (last.next != null) {
+            last = last.next;
+        }
+        last.next = newNode;
+        newNode.prev = last;
+        newNode.next = head;
+        head.prev = newNode;
     }
 
     @Override
     public void remove(Integer position) {
-        Node prev = getHead();
+        Node<T> prev = getHead();
 
         if (position == 0) {
             head = head.next;
@@ -37,17 +38,17 @@ public class LinkedList implements LinkedListInterface {
                 prev = prev.next;
             }
 
-            Node prox = prev.next;
+            Node<T> prox = prev.next;
             prev.next = prox.next;
         }
     }
 
     @Override
-    public Object get(Integer position) {
-        Node it = getHead();
+    public T get(Integer position) {
+        Node<T> it = getHead();
 
         if (position == 0) {
-            return head;
+            return head.value;
         }
         for (int index = 0; index < position; index++) {
             it = it.next;
@@ -57,10 +58,9 @@ public class LinkedList implements LinkedListInterface {
     }
 
     @Override
-    public void addFirst(Object value) {
-        Node newNode = new Node();
+    public void addFirst(T value) {
+        Node<T> newNode = new Node<>(value);
 
-        newNode.value = value;
         newNode.next = getHead();
         newNode.prev = null;
 
@@ -68,12 +68,12 @@ public class LinkedList implements LinkedListInterface {
     }
 
     @Override
-    public void addLast(Object value) {
-        Node newNode = new Node();
+    public void addLast(T value) {
+        Node<T> newNode = new Node<>(value);
         newNode.value = value;
         newNode.next = null;
 
-        Node last = getHead();
+        Node<T> last = getHead();
         while (last.next != null) {
             last = last.next;
         }
@@ -83,12 +83,12 @@ public class LinkedList implements LinkedListInterface {
     }
 
     @Override
-    public boolean exists(Object value) {
-        Node it = getHead();
+    public boolean exists(T value) {
+        Node<T> it = getHead();
         boolean valueExists = false;
 
         while (it.next != null) {
-            if (it.value == value) {
+            if (it.value.equals(value)) {
                 valueExists = true;
                 break;
             }
@@ -98,7 +98,7 @@ public class LinkedList implements LinkedListInterface {
         return valueExists;
     }
 
-    public Node getHead() {
+    public Node<T> getHead() {
         return head;
     }
 }
