@@ -99,30 +99,45 @@ public class CircularLinkedList<T> implements LinkedListInterface<T> {
             tail = newNode;
             return;
         }
-        // Apunto el nuevo nodo al next del ultimo elemento.
+        // Apunto el nuevo nodo al next de tail.
         tail.next = newNode;
-        // Apunto el next del nuevo nodo al head (el primer nodo).
-        newNode.next = head;
-        // El nodo final pasa a ser el nuevo nodo.
+        // El tail pasa a ser el nuevo nodo.
         tail = newNode;
+        // Apunto tail al head (el primer nodo).
+        tail.next = head;
     }
 
     @Override
     public void remove(Integer position) throws IndexOutOfRange {
         positionIsValid(position);
-        Node<T> aux = head;
+        if (head == null) {
+            return;
+        }
 
-        if (position == 0) {
+        if (head == tail) {
+            head = null;
+            tail = null;
+            return;
+        }
+
+        if (position.equals(0)) {
             head = head.next;
             tail.next = head;
             return;
         }
+        Node<T> aux = head;
 
         for (int index = 0; index < position - 1; index++) {
             aux = aux.next;
         }
+
         Node<T> prox = aux.next;
         aux.next = prox.next;
+
+        if (prox == tail) {
+            tail = aux;
+        }
+
     }
 
 /*    @Override
