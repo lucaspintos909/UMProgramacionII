@@ -111,14 +111,17 @@ class CircularLinkedListTest {
             assertEquals(4, list.size());
             assertEquals(2, list.get(0));
 
-
             list.remove(3);
             assertEquals(3, list.size());
             assertEquals(4, list.get(2));
 
-            list.remove(1);
+            list.remove(0);
             assertEquals(2, list.size());
             assertEquals(4, list.get(1));
+
+            list.remove(0);
+            assertEquals(1, list.size());
+            assertEquals(4, list.get(0));
         } catch (IndexOutOfRange e) {
             System.out.println("Exception occured: " + e);
         }
