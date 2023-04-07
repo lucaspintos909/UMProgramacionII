@@ -49,29 +49,37 @@ public class Ejercicio7 {
             throw new IllegalArgumentException("");
         }
         System.out.println("M = " + m);
-        System.out.println("Lista de jugadores que son eliminados");
         while (colIntegrantes.size() != 1) {
+            // Obtengo el head cada vez que arranco a iterar devuelta sobre la lista
             Node<String> head = colIntegrantes.getHead();
             for (Integer index = 0; index < colIntegrantes.size(); index++) {
                 if (contador == m) {
+                    // Agrego el integrante a borrar en la lista de eliminados
                     lista.add(colIntegrantes.get(index));
                     try {
+                        // Elimino el integrante
                         colIntegrantes.remove(index);
+                        /*
+                         * Le resto 1 al index, ya que al eliminar el integrante,
+                         * el siguiente integrante pasa a tener el indice del eliminado
+                        */
                         index--;
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
+                    // Reseteo el contador
                     contador = 1;
                 } else {
                     head = head.getNext();
                     contador++;
                 }
             }
-            System.out.print("\nEn lista: ");
-            colIntegrantes.display();
-            System.out.print("Eliminados: ");
-            lista.display();
         }
+
+        System.out.print("\nJugador ganador: ");
+        colIntegrantes.display();
+        System.out.print("Eliminados: ");
+        lista.display();
 
         return lista;
     }
