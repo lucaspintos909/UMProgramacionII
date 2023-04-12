@@ -3,7 +3,7 @@ package TADs.LinkedList;
 import TADs.exceptions.IndexOutOfRange;
 import TADs.interfaces.LinkedListInterface;
 
-public class LinkedList<T> implements LinkedListInterface<T> {
+public class LinkedList<T extends Comparable<T>> implements LinkedListInterface<T> {
     private Node<T> head;
 
     public Integer size() {
@@ -45,6 +45,57 @@ public class LinkedList<T> implements LinkedListInterface<T> {
             aux = aux.next;
         }
         aux.next = newNode;
+    }
+
+    public void insertAt(T value, Integer index) {
+        if (index == 0) {
+            addFirst(value);
+            return;
+        }
+        if (index.equals(size())) {
+            addLast(value);
+            return;
+        }
+
+        Node<T> aux = head;
+        for (int i = 1; i < index; i++) {
+            aux = aux.next;
+        }
+
+        Node<T> node = new Node<>(value);
+        node.next = aux.next;
+        aux.next = node;
+    }
+
+    public void sortedInsert(T value) {
+        Node<T> newNode = new Node<>(value);
+
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+        if (head.value.compareTo(value) > 0) {
+            addFirst(value);
+            return;
+        }
+
+        Node<T> aux = head;
+
+
+        do {
+
+            if (aux.next != null && aux.next.value.compareTo(value) > 0) {
+                newNode.next = aux.next;
+                aux.next = newNode;
+                break;
+            }
+            aux = aux.next;
+
+        } while (aux != null);
+
+        if (aux == null) {
+            add(value);
+        }
     }
 
     @Override
@@ -118,5 +169,18 @@ public class LinkedList<T> implements LinkedListInterface<T> {
 
     public Node<T> getHead() {
         return head;
+    }
+
+    public void display() {
+        Node<T> aux = head;
+        if (head != null) {
+            do {
+                System.out.print(aux.value + " -> ");
+
+                aux = aux.next;
+
+            } while (aux != null);
+        }
+        System.out.println("FIN");
     }
 }
