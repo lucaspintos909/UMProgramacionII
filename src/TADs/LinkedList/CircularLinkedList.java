@@ -3,7 +3,7 @@ package TADs.LinkedList;
 import TADs.interfaces.LinkedListInterface;
 import TADs.exceptions.IndexOutOfRange;
 
-public class CircularLinkedList<T> implements LinkedListInterface<T> {
+public class CircularLinkedList<T extends Comparable<T>> implements LinkedListInterface<T> {
 
     private Node<T> head;
     private Node<T> tail;

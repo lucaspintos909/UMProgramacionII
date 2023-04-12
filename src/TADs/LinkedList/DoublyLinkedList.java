@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import TADs.exceptions.IndexOutOfRange;
 import TADs.interfaces.LinkedListInterface;
 
-public class DoublyLinkedList<T> implements LinkedListInterface<T> {
+public class DoublyLinkedList<T extends Comparable<T>> implements LinkedListInterface<T> {
     private Node<T> head;
 
     public void display() {
