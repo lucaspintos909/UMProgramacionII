@@ -123,4 +123,38 @@ class LinkedListTest {
         LinkedList<Integer> list = new LinkedList<>();
         assertEquals(0, list.size());
     }
+
+    @Test
+    void sortedInsert() {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.sortedInsert(5);
+        list.sortedInsert(2);
+        list.sortedInsert(1);
+        list.sortedInsert(4);
+        list.sortedInsert(3);
+
+        Node<Integer> aux = list.getHead();
+        assertEquals(1, aux.getValue());
+
+        aux = aux.getNext();
+        assertEquals(2, aux.getValue());
+
+        aux = aux.getNext();
+        assertEquals(3, aux.getValue());
+
+        aux = aux.getNext();
+        assertEquals(4, aux.getValue());
+
+        aux = aux.getNext();
+        assertEquals(5, aux.getValue());
+
+        list.sortedInsert(7);
+        list.sortedInsert(6);
+
+        aux = aux.getNext();
+        assertEquals(6, aux.getValue());
+
+        aux = aux.getNext();
+        assertEquals(7, aux.getValue());
+    }
 }
