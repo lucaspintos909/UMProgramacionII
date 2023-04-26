@@ -1,15 +1,15 @@
 package parciales.parcial2022;
 
-import parciales.parcial2022.entities.Cliente;
-import entities.Pedido;
-import entities.Producto;
-import exceptions.EntidadNoExiste;
-import exceptions.EntidadYaExiste;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-import exceptions.InformacionInvalida;
 import org.junit.jupiter.api.Test;
+
+import parciales.Cliente;
+import parciales.Pedido;
+import parciales.EntidadNoExiste;
+import parciales.EntidadYaExiste;
+import parciales.InformacionInvalida;
+
 import uy.edu.um.adt.linkedlist.MyLinkedListImpl;
 import uy.edu.um.adt.linkedlist.MyList;
 
@@ -258,7 +258,7 @@ class SupermercadoImpTest {
         }
     }
 
-    void agregarProductosBasicos(SupermercadoMgt supermercado){
+    void agregarProductosBasicos(SupermercadoMgt supermercado) {
         try {
             supermercado.agregarProducto("Carne", 1000);
             supermercado.agregarProducto("Yerba", 200);

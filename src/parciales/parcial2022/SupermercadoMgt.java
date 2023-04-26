@@ -1,7 +1,11 @@
-package parciales
+package parciales.parcial2022;
 
-import exceptions.*;
-import entities.*;
+import parciales.*;
+import parciales.EntidadNoExiste;
+import parciales.EntidadYaExiste;
+import parciales.InformacionInvalida;
+import parciales.Pedido;
+import parciales.Cliente;
 import uy.edu.um.adt.linkedlist.MyList;
 
 public interface SupermercadoMgt {

@@ -7,7 +7,6 @@ import parciales.EntidadNoExiste;
 import parciales.InformacionInvalida;
 import parciales.Pedido;
 import parciales.Producto;
-import parciales.SupermercadoMgt;
 import uy.edu.um.adt.linkedlist.MyLinkedListImpl;
 import uy.edu.um.adt.linkedlist.MyList;
 import uy.edu.um.adt.queue.*;
