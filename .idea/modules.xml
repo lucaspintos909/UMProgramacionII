@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/TADS/TADS.iml" filepath="$PROJECT_DIR$/TADS/TADS.iml" />
       <module fileurl="file://$PROJECT_DIR$/UMProgramacionII.iml" filepath="$PROJECT_DIR$/UMProgramacionII.iml" />
     </modules>
   </component>
